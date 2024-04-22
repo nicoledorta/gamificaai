@@ -108,10 +108,9 @@ header .container-grid {
     border-right: 4px solid var(--laranja-gamifica);
     white-space: nowrap;
 
-    animation: 
+    animation:
         digitando 2s steps(40, end),
-        cursor 0.75s step-end infinite
-    ;
+        cursor 0.75s step-end infinite;
 }
 
 @keyframes digitando {
@@ -125,6 +124,7 @@ header .container-grid {
 }
 
 @keyframes cursor {
+
     from,
     to {
         border-color: transparent;
@@ -368,14 +368,16 @@ h2 {
 
     resize: none;
 
-    
+
 }
 
-.campo label, .campo-descricao label {
+.campo label,
+.campo-descricao label {
     margin-bottom: 15px;
 }
 
-.campo input, .campo-descricao textarea {
+.campo input,
+.campo-descricao textarea {
     font-family: "Montserrat";
     font-size: 17px;
 }
@@ -402,7 +404,8 @@ h2 {
 
     font-size: 17px;
     font-family: "Montserrat";
-    font-weight: 700; /* Bold */
+    font-weight: 700;
+    /* Bold */
 
     text-transform: uppercase;
 
@@ -431,7 +434,7 @@ footer .container-grid {
 
 .redes-sociais {
     height: 50%;
-    
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -509,6 +512,180 @@ footer .container-grid {
 }
 
 @media screen and (max-width: 1080px) {
-    
+    .container-cards {
+        flex-wrap: wrap;
+    }
+
+    .card {
+        height: 400px;
+
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: 40%;
+    }
+
+    footer {
+        height: unset;
+        /* unset restaura a propriedade de um elemento de forma separada, volta para as configuracoes originais */
+    }
+
+    footer .container-grid {
+        padding: 80px;
+        /* espacamento interno */
+        flex-direction: column;
+    }
+
+    footer img {
+        margin-bottom: 100px;
+    }
+
+    footer p {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .redes-sociais {
+        align-items: center;
+    }
+
 }
 
+@media screen and (max-width: 800px) {
+    .card {
+        flex-basis: 45%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #sobre {
+        height: unset;
+        margin-bottom: 40px;
+    }
+
+    #sobre h2 {
+        margin-bottom: 50px;
+    }
+
+    #sobre p {
+        margin-bottom: 30px;
+    }
+
+    #cases,
+    #contato {
+        margin-bottom: unset;
+    }
+
+    #portfolio a {
+        width: 100%;
+        text-align: center;
+    }
+
+    .campo,
+    .campo-descricao,
+    #contato form button {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .container-grid {
+        width: 90%;
+    }
+
+    header img {
+        width: 200px;
+    }
+
+    .banner {
+        background-size: cover;
+    }
+
+    .conteudo-banner p {
+        font-size: 24px;
+    }
+
+    nav.menu {
+        width: 100%;
+
+        display: none;
+    }
+
+    #sobre {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    #sobre p {
+        width: 90%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+    }
+
+    #cases.container-grid {
+        width: 100%;
+        margin: unset;
+    }
+
+    .container-cards {
+        flex-wrap: nowrap;
+
+        gap: 40px;
+
+        overflow-x: auto;
+    }
+
+    .card {
+        height: 400px;
+        width: 280px;
+
+        flex-basis: unset;
+    }
+
+    .card:first-child {
+        margin-left: 30px;
+    }
+
+    .card:last-child {
+        margin-right: 30px;
+    }
+
+    #portfolio {
+        margin-bottom: 0px;
+    }
+
+    #contato {
+        padding-top: 150px;
+
+        background-color: var(--roxo-gamifica);
+        color: white;
+    }
+
+    #contato h2 {
+        margin-bottom: 0;
+    }
+
+    #contato form {
+        width: 100%;
+        border-radius: 0;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    header img {
+        width: 160px;
+    }
+
+    header svg {
+        width: 40px;
+    }
+
+    .conteudo-banner p {
+        font-size: 20px;
+    }
+
+    footer img {
+        width: 200px;
+    }
+}
