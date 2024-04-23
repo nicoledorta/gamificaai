@@ -526,12 +526,10 @@ footer .container-grid {
 
     footer {
         height: unset;
-        /* unset restaura a propriedade de um elemento de forma separada, volta para as configuracoes originais */
     }
 
     footer .container-grid {
         padding: 80px;
-        /* espacamento interno */
         flex-direction: column;
     }
 
