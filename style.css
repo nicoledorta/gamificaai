@@ -81,6 +81,34 @@ html {
     fill: #ffffff76;
 }
 
+.botoes {
+    width: 150px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    bottom: 4%;
+
+    left: calc(50% - 75px);
+}
+
+.botoes button {
+    width: 30px;
+
+    display: unset;
+
+    background: none;
+    border: none;
+
+    cursor: pointer;
+}
+
+.botoes svg {
+    fill: #ffffff76;
+}
+
 header {
     height: 165px;
 }
