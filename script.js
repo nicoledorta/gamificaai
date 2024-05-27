@@ -94,24 +94,7 @@ function selecionarSlide(indiceSlide) { //o indice deixa mais dinamico e facilit
 
 // carregamento dinamico dos cases de sucesso
 // array porque é uma lista dos cases
-let listaCases = [
-    /*{
-        imagem: "https://unsplash.it/600/400?image=76",
-        descricao: "Uma empresa de tecnologia lança um desafio de gamificação onde os funcionários devem propor e implementar ideias inovadoras."
-    },
-    {
-        imagem: "https://unsplash.it/600/400?image=23",
-        descricao: "Uma empresa de consultoria cria uma narrativa interativa de gamificação para seu programa de treinamento."
-    },
-    {
-        imagem: "https://unsplash.it/600/400?image=8",
-        descricao: "Uma empresa de vendas implementa uma competição gamificada entre equipes que competem pelo topo do ranking"
-    },
-    {
-        imagem: "https://unsplash.it/600/400?image=15",
-        descricao: "Uma empresa de saúde promove o bem-estar dos funcionários através de um desafio de gamificação de condicionamento físico"
-    }*/
-]
+let listaCases = []
 
 function renderizarCases() {
     //encontrar o elemento para inserir os cards
@@ -124,8 +107,8 @@ function renderizarCases() {
     listaCases.forEach(cardCase => {
         //montar o html do card, passando os atributos do case
         template += `<div class="card">
-        <img src=${ cardCase.imagem } alt="">
-        <p>${ cardCase.descricao }</p>
+        <img src=${cardCase.imagem} alt="">
+        <p>${cardCase.descricao}</p>
         <button>Ver mais</button>
     </div>`
 
@@ -133,4 +116,62 @@ function renderizarCases() {
 
     //inserir html dos cases montados no elemento container-cards
     containerCards.innerHTML = template
+}
+
+function carregarCases() {
+    // Método HTTP GET - read - serve para mostrar um item ou uma lista de itens
+    fetch("http://localhost:3000/cases")
+        // desserialização
+        .then((resposta) => resposta.json())
+        .then((dadosTratados) => {
+            console.log(dadosTratados)
+            listaCases = dadosTratados
+            renderizarCases()
+        })
+}
+
+function solicitarOrcamento(event) {
+    //pegar os valores dos inputs
+    let valorNome = document.getElementById("campo-nome").value
+    let valorEmail = document.getElementById("campo-email").value
+    let valorDescricao = document.getElementById("campo-texto").value
+
+    console.log(valorNome, valorEmail, valorDescricao);
+
+    //organizar os valores em um objeto
+    let dadosForm = {
+        nome: valorNome,
+        email: valorEmail,
+        descricao: valorDescricao
+    }
+
+    console.log(dadosForm);
+
+    //enviar a requisição para a API
+    // método HTTP POST - create - cadastrar um novo registro (solicitacao)
+    fetch("http://localhost:3000/solicitacoes", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dadosForm)
+    })
+        //CASO SUCESSO
+        .then(resposta => {
+            console.log(resposta);
+
+            //limpar os inputs
+            document.querySelector("#contato form").reset()
+
+            //mostrar um alert de sucesso
+            alert("Solicitação enviada com sucesso!!! 😊")
+        })
+        .catch(erro => {
+            //CASO ERRO
+            //mostrar alert com mensagem de erro
+            console.log(erro);
+            alert("Erro na requisição 😣")
+        })
+
+    event.preventDefault()
 }
